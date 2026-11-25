@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | FreshCart</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .checkout-container {
+            padding: 45px 7%;
+        }
+
+        .checkout-container h1 {
+            color: #174d35;
+            margin-bottom: 8px;
+        }
+
+        .checkout-container > p {
+            color: #78847b;
+            margin-bottom: 30px;
+        }
+
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .checkout-form, .order-summary {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.05);
+        }
+
+        .checkout-form h2, .order-summary h2 {
+            color: #174d35;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #405346;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #dce6da;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #4b9b53;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 85px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px;
+            border: 1px solid #e1e9df;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .payment-option input {
+            accent-color: #174d35;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 16px 0;
+            color: #68756b;
+            gap: 12px;
+        }
+
+        .summary-total {
+            border-top: 1px solid #e5ebe3;
+            padding-top: 18px;
+            font-weight: bold;
+            color: #174d35;
+            font-size: 19px;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            background: #174d35;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .place-order-btn:hover {
+            background: #2d744a;
+        }
+
+        .checkout-message {
+            display: none;
+            background: #e8f3e4;
+            color: #174d35;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 18px;
+            line-height: 1.6;
+        }
+
+        .checkout-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #edf0eb;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        @media(max-width: 750px) {
+            .checkout-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-container {
+                padding: 30px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">Fresh groceries delivered to your doorstep</div>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">Fresh<span>Cart</span></a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="orders.html">My Orders</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+        <div class="nav-actions">
+            <a href="login.html">Login</a>
+            <a href="register.html" class="register-btn">Register</a>
+            <a href="cart.html" class="cart-btn">Cart</a>
+        </div>
+    </header>
+
+    <main class="checkout-container">
+        <h1>Checkout</h1>
+        <p>Almost there! Enter your delivery details to place your order.</p>
+
+        <div class="checkout-layout">
+
+            <form class="checkout-form" id="checkoutForm">
+                <h2>Delivery Information</h2>
+
+                <div class="form-group">
+                    <label for="customerName">Full Name</label>
+                    <input type="text" id="customerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Mobile Number</label>
+                    <input type="tel" id="phone" pattern="[0-9]{10}"
+                           maxlength="10" placeholder="10-digit mobile number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Complete Delivery Address</label>
+                    <textarea id="address" placeholder="House number, street, area..."
+                              required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City / Town</label>
+                    <input type="text" id="city" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pincode">PIN Code</label>
+                    <input type="text" id="pincode" pattern="[0-9]{6}"
+                           maxlength="6" required>
+                </div>
+
+                <h2>Schedule Delivery</h2>
+
+                <div class="form-group">
+                    <label for="deliveryDate">Delivery Date</label>
+                    <input type="date" id="deliveryDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="deliverySlot">Delivery Time</label>
+                    <select id="deliverySlot" required>
+                        <option value="">Choose a time slot</option>
+                        <option>9 AM - 12 PM</option>
+                        <option>12 PM - 3 PM</option>
+                        <option>3 PM - 6 PM</option>
+                        <option>6 PM - 9 PM</option>
+                    </select>
+                </div>
+
+                <h2>Payment Method</h2>
+
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="Cash on Delivery" required>
+                    Cash on Delivery
+                </label>
+
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="UPI">
+                    UPI (Demo)
+                </label>
+
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="Card">
+                    Credit / Debit Card (Demo)
+                </label>
+
+                <button type="submit" class="place-order-btn">
+                    Place Order
+                </button>
+
+                <div class="checkout-message" id="checkoutMessage"></div>
+            </form>
+
+            <aside class="order-summary">
+                <h2>Your Order</h2>
+
+                <div id="checkoutItems"></div>
+
+                <div class="summary-line">
+                    <span>Subtotal</span>
+                    <strong id="checkoutSubtotal">₹0</strong>
+                </div>
+
+                <div class="summary-line">
+                    <span>Delivery</span>
+                    <strong id="checkoutDelivery">₹0</strong>
+                </div>
+
+                <div class="summary-line summary-total">
+                    <span>Total</span>
+                    <strong id="checkoutTotal">₹0</strong>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <a href="index.html" class="logo">Fresh<span>Cart</span></a>
+        <p>Your everyday grocery shopping partner.</p>
+        <p class="copyright">© 2026 FreshCart. All rights reserved.</p>
+    </footer>
+
+    <script src="checkout.js"></script>
+</body>
+</html>

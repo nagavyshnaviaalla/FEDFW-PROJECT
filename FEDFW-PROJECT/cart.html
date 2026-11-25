@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart | FreshCart</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .cart-container {
+            padding: 45px 7%;
+            min-height: 65vh;
+        }
+
+        .cart-title {
+            color: #174d35;
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .cart-subtitle {
+            color: #78847b;
+            margin-bottom: 30px;
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .cart-items, .summary {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.05);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 18px 0;
+            border-bottom: 1px solid #edf0eb;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #f2f4f0;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-details h3 {
+            color: #26352b;
+            margin-bottom: 8px;
+        }
+
+        .item-details p {
+            color: #174d35;
+            font-weight: bold;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .quantity button {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: #e8f3e4;
+            color: #174d35;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        .remove-btn {
+            border: none;
+            background: none;
+            color: #d9534f;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        .summary h2 {
+            color: #174d35;
+            margin-bottom: 22px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 16px 0;
+            color: #66736a;
+        }
+
+        .summary-total {
+            border-top: 1px solid #e5ebe3;
+            padding-top: 18px;
+            font-size: 19px;
+            color: #174d35;
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            display: block;
+            text-align: center;
+            background: #174d35;
+            color: white;
+            padding: 15px;
+            border-radius: 9px;
+            margin-top: 25px;
+            font-weight: bold;
+        }
+
+        .continue-btn {
+            display: inline-block;
+            color: #39814b;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px 15px;
+            color: #78847b;
+        }
+
+        .empty-cart h2 {
+            color: #174d35;
+            margin-bottom: 12px;
+        }
+
+        @media(max-width: 750px) {
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-container {
+                padding: 30px 5%;
+            }
+
+            .cart-item {
+                gap: 12px;
+            }
+
+            .cart-item img {
+                width: 75px;
+                height: 75px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">Fresh groceries delivered to your doorstep</div>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">Fresh<span>Cart</span></a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="orders.html">My Orders</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="login.html">Login</a>
+            <a href="register.html" class="register-btn">Register</a>
+            <a href="cart.html" class="cart-btn">
+                Cart <span id="cartCount">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="cart-container">
+
+        <h1 class="cart-title">My Shopping Cart</h1>
+        <p class="cart-subtitle">Review your selected products before checkout.</p>
+
+        <div class="cart-layout">
+            <section class="cart-items" id="cartItems"></section>
+
+            <aside class="summary">
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <strong id="subtotal">₹0</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Delivery</span>
+                    <strong id="delivery">₹0</strong>
+                </div>
+
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <strong id="total">₹0</strong>
+                </div>
+
+                <a href="checkout.html" class="checkout-btn" id="checkoutBtn">
+                    Proceed to Checkout
+                </a>
+
+                <a href="products.html" class="continue-btn">
+                    ← Continue Shopping
+                </a>
+            </aside>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <a href="index.html" class="logo">Fresh<span>Cart</span></a>
+        <p>Your everyday grocery shopping partner.</p>
+        <p class="copyright">© 2026 FreshCart. All rights reserved.</p>
+    </footer>
+
+    <script src="cart.js"></script>
+</body>
+</html>
