@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshCart - Products</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5fff7;
+            color: #222;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: #198754;
+            color: white;
+            padding: 15px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #d8ffd8;
+        }
+
+        .right-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .auth-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 10px;
+        }
+
+        .auth-link:hover {
+            color: #d8ffd8;
+        }
+
+        .cart {
+            background: white;
+            color: #198754;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #d9ffe4, #ffffff);
+        }
+
+        .hero h1 {
+            color: #198754;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #555;
+            font-size: 17px;
+        }
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-box {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .search-wrapper {
+            width: 80%;
+            max-width: 700px;
+            margin: auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 22px;
+            border: 2px solid #198754;
+            border-radius: 30px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .search-box input:focus {
+            box-shadow: 0 0 10px rgba(25, 135, 84, 0.25);
+        }
+
+        .search-hint {
+            margin-top: 10px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* =========================
+           CATEGORIES
+        ========================= */
+
+        .categories {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .category-btn {
+            border: none;
+            background: #dff7e7;
+            color: #198754;
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: #198754;
+            color: white;
+        }
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .products-container {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            padding-bottom: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #f8fff9;
+        }
+
+        .product-card h3 {
+            margin-top: 12px;
+            color: #222;
+            font-size: 19px;
+        }
+
+        .category {
+            color: #777;
+            margin: 6px 0;
+            font-size: 14px;
+        }
+
+        .rating {
+            color: #f5a623;
+            margin: 7px 0;
+        }
+
+        .price {
+            font-size: 20px;
+            color: #198754;
+            font-weight: bold;
+        }
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-size: 14px;
+        }
+
+        .add-btn {
+            width: 100%;
+            border: none;
+            background: #198754;
+            color: white;
+            padding: 11px;
+            margin-top: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .add-btn:hover {
+            background: #146c43;
+        }
+
+        /* =========================
+           ONLINE SEARCH RESULTS
+        ========================= */
+
+        .online-results {
+            width: 90%;
+            max-width: 1300px;
+            margin: 20px auto 50px;
+        }
+
+        .online-title {
+            margin-bottom: 20px;
+        }
+
+        .online-title h2 {
+            color: #198754;
+            font-size: 28px;
+        }
+
+        .online-title p {
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .online-product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .online-card {
+            position: relative;
+        }
+
+        .online-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #f8fff9;
+        }
+
+        .online-label {
+            display: inline-block;
+            background: #e8f7ee;
+            color: #198754;
+            padding: 5px 9px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin: 6px 0;
+        }
+
+        .search-loading,
+        .no-results {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+            margin-top: 20px;
+        }
+
+        .search-loading {
+            color: #198754;
+            font-weight: bold;
+        }
+
+        .no-results h3 {
+            color: #198754;
+            margin-bottom: 8px;
+        }
+
+        .no-results p {
+            color: #777;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #146c43;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .products-container,
+            .online-product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .products-container,
+            .online-product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                margin-top: 15px;
+                gap: 12px;
+            }
+
+            .right-links {
+                margin-top: 15px;
+            }
+
+        }
+
+        @media (max-width: 450px) {
+
+            .products-container,
+            .online-product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .search-wrapper {
+                width: 95%;
+            }
+
+            .navbar {
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🛒 FreshCart
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="products.html">Products</a>
+        </li>
+
+        <li>
+            <a href="index.html#offers">Offers</a>
+        </li>
+
+        <li>
+            <a href="index.html#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <div class="right-links">
+
+        <a href="login.html" class="auth-link">
+            Login
+        </a>
+
+        <a href="register.html" class="auth-link">
+            Register
+        </a>
+
+        <a href="cart.html" class="cart">
+            🛒 Cart:
+            <span id="cartCount">0</span>
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <h1>
+        Fresh Products 🥦
+    </h1>
+
+    <p>
+        Fresh groceries delivered straight to your doorstep
+    </p>
+
+</section>
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<div class="search-box">
+
+    <div class="search-wrapper">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search any grocery product..."
+            oninput="searchProducts()"
+        >
+
+        <p class="search-hint">
+            Try: apple, cucumber, bread, cheese, cereal, juice, rice...
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<div class="categories">
+
+    <button class="category-btn active"
+        onclick="filterProducts('all', this)">
+        All
+    </button>
+
+    <button class="category-btn"
+        onclick="filterProducts('grocery', this)">
+        Grocery
+    </button>
+
+    <button class="category-btn"
+        onclick="filterProducts('dairy', this)">
+        Dairy
+    </button>
+
+    <button class="category-btn"
+        onclick="filterProducts('fruits', this)">
+        Fruits
+    </button>
+
+    <button class="category-btn"
+        onclick="filterProducts('vegetables', this)">
+        Vegetables
+    </button>
+
+    <button class="category-btn"
+        onclick="filterProducts('snacks', this)">
+        Snacks
+    </button>
+
+</div>
+
+
+<!-- =========================
+     LOCAL PRODUCTS
+========================= -->
+
+<div class="products-container" id="productsContainer">
+
+    <!-- 1 -->
+    <div class="product-card" data-category="grocery">
+        <img src="./FreshCart_30_Product_Images/images/rice.jpg"
+             alt="Premium Rice"
+             data-product="Premium Rice">
+        <h3>Premium Rice</h3>
+        <p class="category">Grocery • 5 Kg</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹450</span>
+        <span class="old-price">₹520</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 2 -->
+    <div class="product-card" data-category="grocery">
+        <img src="./FreshCart_30_Product_Images/images/wheat.jpg"
+             alt="Wheat Flour"
+             data-product="Wheat Flour">
+        <h3>Wheat Flour</h3>
+        <p class="category">Grocery • 5 Kg</p>
+        <p class="rating">★★★★☆</p>
+        <span class="price">₹280</span>
+        <span class="old-price">₹320</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 3 -->
+    <div class="product-card" data-category="grocery">
+        <img src="./FreshCart_30_Product_Images/images/sugar.jpg"
+             alt="White Sugar"
+             data-product="White Sugar">
+        <h3>White Sugar</h3>
+        <p class="category">Grocery • 1 Kg</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹55</span>
+        <span class="old-price">₹65</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 4 -->
+    <div class="product-card" data-category="dairy">
+        <img src="./FreshCart_30_Product_Images/images/milk.jpg"
+             alt="Fresh Milk"
+             data-product="Fresh Milk">
+        <h3>Fresh Milk</h3>
+        <p class="category">Dairy • 1 Litre</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹65</span>
+        <span class="old-price">₹75</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 5 -->
+    <div class="product-card" data-category="grocery">
+        <img src="./FreshCart_30_Product_Images/images/bread.jpg"
+             alt="Fresh Bread"
+             data-product="Fresh Bread">
+        <h3>Fresh Bread</h3>
+        <p class="category">Grocery • 400 g</p>
+        <p class="rating">★★★★☆</p>
+        <span class="price">₹45</span>
+        <span class="old-price">₹55</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 6 -->
+    <div class="product-card" data-category="grocery">
+        <img src="./FreshCart_30_Product_Images/images/oil.jpg"
+             alt="Cooking Oil"
+             data-product="Cooking Oil">
+        <h3>Cooking Oil</h3>
+        <p class="category">Grocery • 1 Litre</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹150</span>
+        <span class="old-price">₹175</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 7 -->
+    <div class="product-card" data-category="grocery">
+        <img src="./FreshCart_30_Product_Images/images/dal.jpg"
+             alt="Toor Dal"
+             data-product="Toor Dal">
+        <h3>Toor Dal</h3>
+        <p class="category">Grocery • 1 Kg</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹140</span>
+        <span class="old-price">₹160</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 8 -->
+    <div class="product-card" data-category="snacks">
+        <img src="./FreshCart_30_Product_Images/images/biscuits.jpg"
+             alt="Chocolate Biscuits"
+             data-product="Chocolate Biscuits">
+        <h3>Chocolate Biscuits</h3>
+        <p class="category">Snacks • 200 g</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹40</span>
+        <span class="old-price">₹50</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 9 -->
+    <div class="product-card" data-category="fruits">
+        <img src="./FreshCart_30_Product_Images/images/apple.jpg"
+             alt="Fresh Apples"
+             data-product="Fresh Apples">
+        <h3>Fresh Apples</h3>
+        <p class="category">Fruits • 1 Kg</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹180</span>
+        <span class="old-price">₹220</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 10 -->
+    <div class="product-card" data-category="fruits">
+        <img src="./FreshCart_30_Product_Images/images/banana.jpg"
+             alt="Fresh Bananas"
+             data-product="Fresh Bananas">
+        <h3>Fresh Bananas</h3>
+        <p class="category">Fruits • 1 Dozen</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹60</span>
+        <span class="old-price">₹75</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 11 -->
+    <div class="product-card" data-category="vegetables">
+        <img src="./FreshCart_30_Product_Images/images/tomato.jpg"
+             alt="Fresh Tomatoes"
+             data-product="Fresh Tomatoes">
+        <h3>Fresh Tomatoes</h3>
+        <p class="category">Vegetables • 1 Kg</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹50</span>
+        <span class="old-price">₹65</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 12 -->
+    <div class="product-card" data-category="vegetables">
+        <img src="./FreshCart_30_Product_Images/images/potato.jpg"
+             alt="Fresh Potatoes"
+             data-product="Fresh Potatoes">
+        <h3>Fresh Potatoes</h3>
+        <p class="category">Vegetables • 1 Kg</p>
+        <p class="rating">★★★★☆</p>
+        <span class="price">₹45</span>
+        <span class="old-price">₹60</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 13 -->
+    <div class="product-card" data-category="fruits">
+        <img src="./FreshCart_30_Product_Images/images/orange.jpg"
+             alt="Fresh Oranges"
+             data-product="Fresh Oranges">
+        <h3>Fresh Oranges</h3>
+        <p class="category">Fruits • 1 Kg</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹120</span>
+        <span class="old-price">₹150</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 14 -->
+    <div class="product-card" data-category="fruits">
+        <img src="./FreshCart_30_Product_Images/images/grapes.jpg"
+             alt="Fresh Grapes"
+             data-product="Fresh Grapes">
+        <h3>Fresh Grapes</h3>
+        <p class="category">Fruits • 500 g</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹90</span>
+        <span class="old-price">₹110</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 15 -->
+    <div class="product-card" data-category="fruits">
+        <img src="./FreshCart_30_Product_Images/images/mango.jpg"
+             alt="Fresh Mangoes"
+             data-product="Fresh Mangoes">
+        <h3>Fresh Mangoes</h3>
+        <p class="category">Fruits • 1 Kg</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹150</span>
+        <span class="old-price">₹180</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 16 -->
+    <div class="product-card" data-category="vegetables">
+        <img src="./FreshCart_30_Product_Images/images/carrot.jpg"
+             alt="Fresh Carrots"
+             data-product="Fresh Carrots">
+        <h3>Fresh Carrots</h3>
+        <p class="category">Vegetables • 1 Kg</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹70</span>
+        <span class="old-price">₹85</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 17 -->
+    <div class="product-card" data-category="vegetables">
+        <img src="./FreshCart_30_Product_Images/images/onion.jpg"
+             alt="Fresh Onions"
+             data-product="Fresh Onions">
+        <h3>Fresh Onions</h3>
+        <p class="category">Vegetables • 1 Kg</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹55</span>
+        <span class="old-price">₹70</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 18 -->
+    <div class="product-card" data-category="vegetables">
+        <img src="./FreshCart_30_Product_Images/images/chilli.jpg"
+             alt="Green Chilli"
+             data-product="Green Chilli">
+        <h3>Green Chilli</h3>
+        <p class="category">Vegetables • 250 g</p>
+        <p class="rating">★★★★☆</p>
+        <span class="price">₹30</span>
+        <span class="old-price">₹40</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 19 -->
+    <div class="product-card" data-category="dairy">
+        <img src="./FreshCart_30_Product_Images/images/curd.jpg"
+             alt="Fresh Curd"
+             data-product="Fresh Curd">
+        <h3>Fresh Curd</h3>
+        <p class="category">Dairy • 500 g</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹45</span>
+        <span class="old-price">₹55</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 20 -->
+    <div class="product-card" data-category="dairy">
+        <img src="./FreshCart_30_Product_Images/images/cheese.jpg"
+             alt="Cheese Slices"
+             data-product="Cheese Slices">
+        <h3>Cheese Slices</h3>
+        <p class="category">Dairy • 200 g</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹120</span>
+        <span class="old-price">₹145</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 21 -->
+    <div class="product-card" data-category="dairy">
+        <img src="./FreshCart_30_Product_Images/images/butter.jpg"
+             alt="Fresh Butter"
+             data-product="Fresh Butter">
+        <h3>Fresh Butter</h3>
+        <p class="category">Dairy • 500 g</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹220</span>
+        <span class="old-price">₹250</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 22 -->
+    <div class="product-card" data-category="snacks">
+        <img src="./FreshCart_30_Product_Images/images/chips.jpg"
+             alt="Potato Chips"
+             data-product="Potato Chips">
+        <h3>Potato Chips</h3>
+        <p class="category">Snacks • 100 g</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹30</span>
+        <span class="old-price">₹40</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 23 -->
+    <div class="product-card" data-category="snacks">
+        <img src="./FreshCart_30_Product_Images/images/cookies.jpg"
+             alt="Chocolate Cookies"
+             data-product="Chocolate Cookies">
+        <h3>Chocolate Cookies</h3>
+        <p class="category">Snacks • 200 g</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹60</span>
+        <span class="old-price">₹75</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 24 -->
+    <div class="product-card" data-category="grocery">
+        <img src="./FreshCart_30_Product_Images/images/noodles.jpg"
+             alt="Instant Noodles"
+             data-product="Instant Noodles">
+        <h3>Instant Noodles</h3>
+        <p class="category">Grocery • 4 Pack</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹80</span>
+        <span class="old-price">₹100</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 25 -->
+    <div class="product-card" data-category="grocery">
+        <img src="./FreshCart_30_Product_Images/images/salt.jpg"
+             alt="Table Salt"
+             data-product="Table Salt">
+        <h3>Table Salt</h3>
+        <p class="category">Grocery • 1 Kg</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹25</span>
+        <span class="old-price">₹30</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 26 -->
+    <div class="product-card" data-category="grocery">
+        <img src="./FreshCart_30_Product_Images/images/tea.jpg"
+             alt="Premium Tea"
+             data-product="Premium Tea">
+        <h3>Premium Tea</h3>
+        <p class="category">Grocery • 250 g</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹120</span>
+        <span class="old-price">₹140</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 27 -->
+    <div class="product-card" data-category="grocery">
+        <img src="./FreshCart_30_Product_Images/images/coffee.jpg"
+             alt="Instant Coffee"
+             data-product="Instant Coffee">
+        <h3>Instant Coffee</h3>
+        <p class="category">Grocery • 100 g</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹180</span>
+        <span class="old-price">₹210</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 28 -->
+    <div class="product-card" data-category="grocery">
+        <img src="./FreshCart_30_Product_Images/images/honey.jpg"
+             alt="Natural Honey"
+             data-product="Natural Honey">
+        <h3>Natural Honey</h3>
+        <p class="category">Grocery • 500 g</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹250</span>
+        <span class="old-price">₹290</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 29 -->
+    <div class="product-card" data-category="vegetables">
+        <img src="./FreshCart_30_Product_Images/images/cucumber.jpg"
+             alt="Fresh Cucumber"
+             data-product="Fresh Cucumber">
+        <h3>Fresh Cucumber</h3>
+        <p class="category">Vegetables • 1 Kg</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹45</span>
+        <span class="old-price">₹60</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+    <!-- 30 -->
+    <div class="product-card" data-category="fruits">
+        <img src="./FreshCart_30_Product_Images/images/watermelon.jpg"
+             alt="Fresh Watermelon"
+             data-product="Fresh Watermelon">
+        <h3>Fresh Watermelon</h3>
+        <p class="category">Fruits • 1 Piece</p>
+        <p class="rating">★★★★★</p>
+        <span class="price">₹80</span>
+        <span class="old-price">₹100</span>
+        <button class="add-btn" onclick="addToCart(this)">Add to Cart</button>
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ONLINE SEARCH RESULTS
+========================= -->
+
+<section id="onlineResults" class="online-results"></section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <h3>🛒 FreshCart</h3>
+
+    <p>
+        Fresh groceries • Best prices • Fast delivery
+    </p>
+
+    <p>
+        © 2026 FreshCart. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   FRESHCART SMART SEARCH + CART
+===================================================== */
+
+
+/* =====================================================
+   MISSING IMAGE HANDLING
+   If an image is missing or broken, automatically
+   create a FreshCart placeholder.
+===================================================== */
+
+function createPlaceholder(productName) {
+
+    const text =
+        encodeURIComponent(
+            "🛒 FreshCart\n" + productName
+        );
+
+    return "data:image/svg+xml;charset=UTF-8," +
+        `<svg xmlns="http://www.w3.org/2000/svg"
+              width="500"
+              height="350"
+              viewBox="0 0 500 350">
+
+            <rect width="500"
+                  height="350"
+                  fill="#f8fff9"/>
+
+            <circle cx="250"
+                    cy="125"
+                    r="65"
+                    fill="#dff7e7"/>
+
+            <text x="250"
+                  y="135"
+                  text-anchor="middle"
+                  font-size="55">
+                🛒
+            </text>
+
+            <text x="250"
+                  y="220"
+                  text-anchor="middle"
+                  font-family="Arial"
+                  font-size="25"
+                  font-weight="bold"
+                  fill="#198754">
+                FreshCart
+            </text>
+
+            <text x="250"
+                  y="255"
+                  text-anchor="middle"
+                  font-family="Arial"
+                  font-size="18"
+                  fill="#555">
+                ${text}
+            </text>
+
+            <text x="250"
+                  y="305"
+                  text-anchor="middle"
+                  font-family="Arial"
+                  font-size="14"
+                  fill="#888">
+                Product Image
+            </text>
+
+        </svg>`;
+}
+
+
+/* -----------------------------------------
+   HANDLE LOCAL PRODUCT IMAGES
+----------------------------------------- */
+
+function setupMissingImageHandling() {
+
+    const images =
+        document.querySelectorAll(
+            ".products-container img"
+        );
+
+    images.forEach(img => {
+
+        const productName =
+            img.dataset.product ||
+            img.alt ||
+            "Grocery Product";
+
+        img.addEventListener(
+            "error",
+            function () {
+
+                if (
+                    this.dataset.fallbackUsed ===
+                    "true"
+                ) {
+                    return;
+                }
+
+                this.dataset.fallbackUsed =
+                    "true";
+
+                this.src =
+                    createPlaceholder(
+                        productName
+                    );
+
+            }
+        );
+
+    });
+
+}
+
+
+/* -----------------------------------------
+   LOAD CART
+----------------------------------------- */
+
+let localCart =
+    JSON.parse(
+        localStorage.getItem("freshCart")
+    ) || [];
+
+
+/* -----------------------------------------
+   UPDATE CART COUNT
+----------------------------------------- */
+
+function updateCartCount() {
+
+    const count =
+        localCart.reduce(
+            (total, item) =>
+                total +
+                Number(item.quantity || 1),
+            0
+        );
+
+    const cartElement =
+        document.getElementById(
+            "cartCount"
+        );
+
+    if (cartElement) {
+
+        cartElement.innerText =
+            count;
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   ADD PRODUCT TO CART
+----------------------------------------- */
+
+function addProductToCart(product) {
+
+    const existingProduct =
+        localCart.find(
+            item =>
+                String(item.id) ===
+                String(product.id)
+        );
+
+    if (existingProduct) {
+
+        existingProduct.quantity =
+            Number(
+                existingProduct.quantity || 1
+            ) + 1;
+
+    } else {
+
+        localCart.push({
+
+            ...product,
+
+            quantity: 1
+
+        });
+
+    }
+
+    localStorage.setItem(
+        "freshCart",
+        JSON.stringify(localCart)
+    );
+
+    updateCartCount();
+
+    alert(
+        product.name +
+        " added to cart! 🛒"
+    );
+
+}
+
+
+/* -----------------------------------------
+   ADD LOCAL PRODUCT
+----------------------------------------- */
+
+function addToCart(button) {
+
+    const card =
+        button.closest(
+            ".product-card"
+        );
+
+    if (!card) {
+        return;
+    }
+
+    const name =
+        card.querySelector("h3")
+            .innerText
+            .trim();
+
+    const priceText =
+        card.querySelector(".price")
+            .innerText
+            .replace("₹", "")
+            .replace(",", "")
+            .trim();
+
+    const price =
+        Number(priceText);
+
+    const image =
+        card.querySelector("img")
+            .getAttribute("src");
+
+    const category =
+        card.dataset.category ||
+        "grocery";
+
+    const id =
+        "local-" +
+        name
+            .toLowerCase()
+            .replace(
+                /[^a-z0-9]+/g,
+                "-"
+            );
+
+    addProductToCart({
+
+        id: id,
+
+        name: name,
+
+        price: price,
+
+        image: image,
+
+        category: category
+
+    });
+
+}
+
+
+/* -----------------------------------------
+   CATEGORY FILTER
+----------------------------------------- */
+
+function filterProducts(
+    category,
+    button
+) {
+
+    const products =
+        document.querySelectorAll(
+            ".product-card"
+        );
+
+    const buttons =
+        document.querySelectorAll(
+            ".category-btn"
+        );
+
+    buttons.forEach(btn => {
+
+        btn.classList.remove(
+            "active"
+        );
+
+    });
+
+    if (button) {
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+    products.forEach(product => {
+
+        if (
+            category === "all" ||
+            product.dataset.category ===
+            category
+        ) {
+
+            product.style.display =
+                "block";
+
+        } else {
+
+            product.style.display =
+                "none";
+
+        }
+
+    });
+
+    document.getElementById(
+        "searchInput"
+    ).value = "";
+
+    const onlineResults =
+        document.getElementById(
+            "onlineResults"
+        );
+
+    onlineResults.innerHTML = "";
+
+}
+
+
+/* -----------------------------------------
+   SEARCH LOCAL PRODUCTS
+----------------------------------------- */
+
+function searchLocalProducts(search) {
+
+    const products =
+        document.querySelectorAll(
+            ".product-card"
+        );
+
+    let found = false;
+
+    products.forEach(product => {
+
+        const name =
+            product.querySelector("h3")
+                .innerText
+                .toLowerCase();
+
+        const category =
+            product.querySelector(
+                ".category"
+            )
+                .innerText
+                .toLowerCase();
+
+        if (
+            name.includes(search) ||
+            category.includes(search)
+        ) {
+
+            product.style.display =
+                "block";
+
+            found = true;
+
+        } else {
+
+            product.style.display =
+                "none";
+
+        }
+
+    });
+
+    return found;
+
+}
+
+
+/* -----------------------------------------
+   SEARCH TIMER
+----------------------------------------- */
+
+let searchTimer;
+
+
+/* -----------------------------------------
+   SMART SEARCH
+----------------------------------------- */
+
+function searchProducts() {
+
+    const input =
+        document.getElementById(
+            "searchInput"
+        );
+
+    const search =
+        input.value
+            .trim()
+            .toLowerCase();
+
+    const onlineResults =
+        document.getElementById(
+            "onlineResults"
+        );
+
+    clearTimeout(searchTimer);
+
+    /* EMPTY SEARCH */
+
+    if (!search) {
+
+        document
+            .querySelectorAll(
+                ".product-card"
+            )
+            .forEach(product => {
+
+                product.style.display =
+                    "block";
+
+            });
+
+        onlineResults.innerHTML =
+            "";
+
+        return;
+
+    }
+
+    /* SEARCH LOCAL PRODUCTS */
+
+    searchLocalProducts(search);
+
+    /*
+       Wait until the user stops typing
+       before calling the online API.
+    */
+
+    searchTimer =
+        setTimeout(
+            function () {
+
+                searchOnlineProducts(
+                    search
+                );
+
+            },
+            800
+        );
+
+}
+
+
+/* -----------------------------------------
+   ONLINE PRODUCT SEARCH
+----------------------------------------- */
+
+async function searchOnlineProducts(
+    search
+) {
+
+    const results =
+        document.getElementById(
+            "onlineResults"
+        );
+
+    results.innerHTML = `
+
+        <div class="search-loading">
+
+            🔎 Searching more grocery products...
+
+        </div>
+
+    `;
+
+    try {
+
+        const url =
+            "https://world.openfoodfacts.org/cgi/search.pl" +
+            "?search_terms=" +
+            encodeURIComponent(search) +
+            "&search_simple=1" +
+            "&action=process" +
+            "&json=1" +
+            "&page_size=8";
+
+        const response =
+            await fetch(url);
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Search request failed"
+            );
+
+        }
+
+        const data =
+            await response.json();
+
+        const products =
+            (data.products || [])
+                .filter(product =>
+
+                    product.product_name &&
+
+                    (
+                        product.image_front_url ||
+                        product.image_url
+                    )
+
+                )
+                .slice(0, 8);
+
+        if (
+            products.length === 0
+        ) {
+
+            results.innerHTML = `
+
+                <div class="no-results">
+
+                    <h3>
+                        😕 No additional products found
+                    </h3>
+
+                    <p>
+                        Try another grocery item such as
+                        bread, cucumber, cereal, cheese or juice.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+        results.innerHTML = `
+
+            <div class="online-title">
+
+                <h2>
+                    More Grocery Products
+                </h2>
+
+                <p>
+                    Additional products found online
+                </p>
+
+            </div>
+
+            <div class="online-product-grid">
+
+                ${products.map(
+                    product => {
+
+                        const productName =
+                            product.product_name ||
+                            "Grocery Product";
+
+                        const image =
+                            product.image_front_url ||
+                            product.image_url;
+
+                        const brand =
+                            product.brands ||
+                            "Grocery Product";
+
+                        const productCode =
+                            product.code ||
+                            Math.random()
+                                .toString(36)
+                                .substring(2);
+
+                        const productId =
+                            "online-" +
+                            productCode;
+
+                        const safeName =
+                            escapeHtml(
+                                productName
+                            );
+
+                        const safeBrand =
+                            escapeHtml(
+                                brand
+                            );
+
+                        const safeImage =
+                            escapeHtml(
+                                image
+                            );
+
+                        return `
+
+                            <div
+                                class="product-card online-card"
+                            >
+
+                                <img
+                                    src="${safeImage}"
+                                    alt="${safeName}"
+                                    onerror="handleOnlineImageError(this)"
+                                >
+
+                                <h3>
+                                    ${safeName}
+                                </h3>
+
+                                <p class="category">
+                                    ${safeBrand}
+                                </p>
+
+                                <p class="online-label">
+                                    🌐 Online grocery result
+                                </p>
+
+                                <p class="category">
+                                    Product found from online database
+                                </p>
+
+                                <span class="price">
+                                    Price varies
+                                </span>
+
+                                <button
+                                    class="add-btn"
+                                    onclick='addOnlineProduct(
+                                        ${JSON.stringify({
+                                            id: productId,
+                                            name: productName,
+                                            image: image,
+                                            category: "grocery",
+                                            price: 0
+                                        })}
+                                    '>
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        `;
+
+                    }
+                ).join("")}
+
+            </div>
+
+        `;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Online grocery search error:",
+            error
+        );
+
+        results.innerHTML = `
+
+            <div class="no-results">
+
+                <h3>
+                    ⚠️ Online search unavailable
+                </h3>
+
+                <p>
+                    Your FreshCart local products
+                    are still available.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   ONLINE IMAGE ERROR
+----------------------------------------- */
+
+function handleOnlineImageError(
+    image
+) {
+
+    if (
+        image.dataset.fallbackUsed ===
+        "true"
+    ) {
+        return;
+    }
+
+    image.dataset.fallbackUsed =
+        "true";
+
+    image.src =
+        createPlaceholder(
+            image.alt ||
+            "Online Grocery Product"
+        );
+
+}
+
+
+/* -----------------------------------------
+   ADD ONLINE PRODUCT
+----------------------------------------- */
+
+function addOnlineProduct(
+    product
+) {
+
+    addProductToCart(product);
+
+}
+
+
+/* -----------------------------------------
+   ESCAPE HTML
+----------------------------------------- */
+
+function escapeHtml(text) {
+
+    return String(text)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* -----------------------------------------
+   PAGE LOAD
+----------------------------------------- */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        updateCartCount();
+
+        setupMissingImageHandling();
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>

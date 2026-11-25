@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshCart | My Profile</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="site-header">
+
+    <div class="container nav-container">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🥬</span>
+            <span>FreshCart</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="products.html">Shop</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="index.html#offers">Offers</a>
+        </nav>
+
+        <div class="nav-actions">
+
+            <a href="profile.html" class="login-link profile-active">
+                Profile
+            </a>
+
+            <button
+                onclick="logout()"
+                class="register-btn profile-logout"
+            >
+                Logout
+            </button>
+
+            <a href="cart.html" class="cart-btn">
+                🛒 Cart
+                <span id="cartCount">0</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= PROFILE HERO ================= -->
+
+<section class="profile-hero">
+
+    <div class="container">
+
+        <span class="profile-eyebrow">
+            MY FRESHCART
+        </span>
+
+        <h1>Welcome back, <span id="heroName">Customer</span>!</h1>
+
+        <p>
+            Manage your account, orders and shopping activity
+            from one place.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROFILE CONTENT ================= -->
+
+<main class="profile-main">
+
+    <div class="container profile-layout">
+
+
+        <!-- ================= LEFT PROFILE CARD ================= -->
+
+        <section class="profile-card">
+
+            <div class="profile-avatar" id="profileAvatar">
+                C
+            </div>
+
+            <h2 id="profileName">
+                Customer
+            </h2>
+
+            <p id="profileEmail">
+                customer@email.com
+            </p>
+
+            <span class="member-badge">
+                FreshCart Member
+            </span>
+
+
+            <div class="profile-divider"></div>
+
+
+            <div class="profile-detail">
+
+                <span class="detail-icon">
+                    📱
+                </span>
+
+                <div>
+                    <small>Phone Number</small>
+                    <strong id="profilePhone">
+                        Not added
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+                <span class="detail-icon">
+                    📅
+                </span>
+
+                <div>
+                    <small>Member Since</small>
+                    <strong id="memberSince">
+                        —
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <button
+                onclick="logout()"
+                class="profile-logout-large"
+            >
+                Logout from Account
+            </button>
+
+        </section>
+
+
+        <!-- ================= RIGHT CONTENT ================= -->
+
+        <section class="profile-content">
+
+
+            <!-- STATISTICS -->
+
+            <div class="profile-stats">
+
+                <div class="profile-stat">
+
+                    <div class="stat-icon">
+                        📦
+                    </div>
+
+                    <div>
+                        <span>Total Orders</span>
+
+                        <strong id="orderCount">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="profile-stat">
+
+                    <div class="stat-icon">
+                        💰
+                    </div>
+
+                    <div>
+                        <span>Total Spent</span>
+
+                        <strong id="totalSpent">
+                            ₹0
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="profile-stat">
+
+                    <div class="stat-icon">
+                        🛒
+                    </div>
+
+                    <div>
+                        <span>Cart Items</span>
+
+                        <strong id="profileCartCount">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCOUNT INFORMATION -->
+
+            <div class="profile-section">
+
+                <div class="profile-section-heading">
+
+                    <div>
+
+                        <span>
+                            ACCOUNT
+                        </span>
+
+                        <h2>
+                            Account Information
+                        </h2>
+
+                    </div>
+
+                    <span class="section-mark">
+                        ✦
+                    </span>
+
+                </div>
+
+
+                <div class="account-info-grid">
+
+                    <div class="account-info">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <p id="infoName">
+                            —
+                        </p>
+
+                    </div>
+
+
+                    <div class="account-info">
+
+                        <label>
+                            Email Address
+                        </label>
+
+                        <p id="infoEmail">
+                            —
+                        </p>
+
+                    </div>
+
+
+                    <div class="account-info">
+
+                        <label>
+                            Phone Number
+                        </label>
+
+                        <p id="infoPhone">
+                            —
+                        </p>
+
+                    </div>
+
+
+                    <div class="account-info">
+
+                        <label>
+                            Account Type
+                        </label>
+
+                        <p>
+                            Customer Account
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="profile-section">
+
+                <div class="profile-section-heading">
+
+                    <div>
+
+                        <span>
+                            QUICK ACCESS
+                        </span>
+
+                        <h2>
+                            What would you like to do?
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-actions">
+
+                    <a
+                        href="products.html"
+                        class="profile-action-card"
+                    >
+
+                        <span class="action-icon">
+                            🛍️
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Continue Shopping
+                            </h3>
+
+                            <p>
+                                Explore fresh products
+                            </p>
+
+                        </div>
+
+                        <span class="action-arrow">
+                            →
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="orders.html"
+                        class="profile-action-card"
+                    >
+
+                        <span class="action-icon">
+                            📦
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                My Orders
+                            </h3>
+
+                            <p>
+                                Track your purchases
+                            </p>
+
+                        </div>
+
+                        <span class="action-arrow">
+                            →
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="cart.html"
+                        class="profile-action-card"
+                    >
+
+                        <span class="action-icon">
+                            🛒
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                View Cart
+                            </h3>
+
+                            <p>
+                                Check your selected items
+                            </p>
+
+                        </div>
+
+                        <span class="action-arrow">
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCOUNT NOTE -->
+
+            <div class="profile-note">
+
+                <div class="profile-note-icon">
+                    🌱
+                </div>
+
+                <div>
+
+                    <strong>
+                        Keep your shopping fresh!
+                    </strong>
+
+                    <p>
+                        Your FreshCart account keeps your
+                        orders and shopping activity organized
+                        in one place.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="site-footer">
+
+    <div class="container footer-content">
+
+        <div class="footer-brand">
+
+            <h2>🥬 FreshCart</h2>
+
+            <p>
+                Fresh choices. Easy shopping.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <a href="index.html">Home</a>
+            <a href="products.html">Shop</a>
+            <a href="orders.html">Orders</a>
+            <a href="cart.html">Cart</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 FreshCart. Made with 💚 for fresh living.
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   CHECK LOGIN
+========================================= */
+
+const currentUser =
+    JSON.parse(
+        localStorage.getItem("freshCartUser")
+    );
+
+
+if (!currentUser) {
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* =========================================
+   DISPLAY USER
+========================================= */
+
+function loadProfile() {
+
+    if (!currentUser) return;
+
+
+    const name =
+        currentUser.name ||
+        "Customer";
+
+
+    const email =
+        currentUser.email ||
+        "Not available";
+
+
+    const phone =
+        currentUser.phone ||
+        "Not added";
+
+
+    /* HEADER */
+
+    document.getElementById(
+        "heroName"
+    ).textContent = name.split(" ")[0];
+
+
+    /* PROFILE */
+
+    document.getElementById(
+        "profileName"
+    ).textContent = name;
+
+
+    document.getElementById(
+        "profileEmail"
+    ).textContent = email;
+
+
+    document.getElementById(
+        "profilePhone"
+    ).textContent = phone;
+
+
+    /* ACCOUNT INFO */
+
+    document.getElementById(
+        "infoName"
+    ).textContent = name;
+
+
+    document.getElementById(
+        "infoEmail"
+    ).textContent = email;
+
+
+    document.getElementById(
+        "infoPhone"
+    ).textContent = phone;
+
+
+    /* AVATAR */
+
+    const firstLetter =
+        name.charAt(0).toUpperCase();
+
+
+    document.getElementById(
+        "profileAvatar"
+    ).textContent =
+        firstLetter;
+
+
+    /* MEMBER DATE */
+
+    document.getElementById(
+        "memberSince"
+    ).textContent =
+        currentUser.joined || "2026";
+
+}
+
+
+/* =========================================
+   LOAD ORDERS
+========================================= */
+
+function loadOrderStatistics() {
+
+    const orders =
+        JSON.parse(
+            localStorage.getItem(
+                "freshCartOrders"
+            )
+        ) || [];
+
+
+    const orderCount =
+        orders.length;
+
+
+    let totalSpent = 0;
+
+
+    orders.forEach(
+        order => {
+
+            totalSpent +=
+                Number(order.total) || 0;
+
+        }
+    );
+
+
+    document.getElementById(
+        "orderCount"
+    ).textContent =
+        orderCount;
+
+
+    document.getElementById(
+        "totalSpent"
+    ).textContent =
+        "₹" +
+        totalSpent.toLocaleString("en-IN");
+
+}
+
+
+/* =========================================
+   CART STATISTICS
+========================================= */
+
+function loadCartStatistics() {
+
+    const cart =
+        JSON.parse(
+            localStorage.getItem(
+                "freshCart"
+            )
+        ) || [];
+
+
+    const cartCount =
+        cart.reduce(
+            (total, item) =>
+                total +
+                Number(item.quantity || 0),
+            0
+        );
+
+
+    document.getElementById(
+        "profileCartCount"
+    ).textContent =
+        cartCount;
+
+
+    document.getElementById(
+        "cartCount"
+    ).textContent =
+        cartCount;
+
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+function logout() {
+
+    const confirmLogout =
+        confirm(
+            "Are you sure you want to logout?"
+        );
+
+
+    if (!confirmLogout) return;
+
+
+    localStorage.removeItem(
+        "freshCartUser"
+    );
+
+
+    localStorage.removeItem(
+        "freshCartRemember"
+    );
+
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadProfile();
+
+        loadOrderStatistics();
+
+        loadCartStatistics();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

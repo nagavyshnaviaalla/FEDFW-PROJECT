@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshCart | Your Cart</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="site-header">
+
+    <div class="container nav-container">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🥬</span>
+            <span>FreshCart</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="products.html">Shop</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="index.html#offers">Offers</a>
+        </nav>
+
+        <div class="nav-actions">
+
+            <a href="login.html" class="login-link">
+                Login
+            </a>
+
+            <a href="register.html" class="register-btn">
+                Register
+            </a>
+
+            <a href="cart.html" class="cart-btn">
+                🛒 Cart
+                <span id="cartCount">0</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= CART HERO ================= -->
+
+<section class="cart-hero">
+
+    <div class="container">
+
+        <div class="cart-heading">
+
+            <span class="small-label">
+                YOUR SHOPPING BAG
+            </span>
+
+            <h1>Your FreshCart</h1>
+
+            <p>
+                Fresh products, carefully selected and ready for your doorstep.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CART SECTION ================= -->
+
+<main class="cart-page">
+
+    <div class="container">
+
+        <!-- EMPTY CART -->
+
+        <div id="emptyCart"
+             class="empty-cart"
+             style="display:none;">
+
+            <div class="empty-cart-icon">
+                🛒
+            </div>
+
+            <h2>Your cart is feeling empty</h2>
+
+            <p>
+                Looks like you haven't added anything fresh yet.
+            </p>
+
+            <a href="products.html"
+               class="primary-btn">
+                Start Shopping →
+            </a>
+
+        </div>
+
+
+        <!-- CART CONTENT -->
+
+        <div id="cartContent"
+             class="cart-layout">
+
+            <!-- PRODUCTS -->
+
+            <section class="cart-items-section">
+
+                <div class="cart-top-row">
+
+                    <div>
+
+                        <h2>Your Items</h2>
+
+                        <p id="itemCount">
+                            0 items
+                        </p>
+
+                    </div>
+
+                    <a href="products.html"
+                       class="continue-shopping">
+                        ← Continue Shopping
+                    </a>
+
+                </div>
+
+                <div id="cartItems"></div>
+
+            </section>
+
+
+            <!-- SUMMARY -->
+
+            <aside class="cart-summary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-line">
+
+                    <span>Subtotal</span>
+
+                    <strong id="subtotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-line discount-line">
+
+                    <span>Discount</span>
+
+                    <strong id="discount">
+                        - ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>Delivery</span>
+
+                    <strong id="delivery">
+                        ₹40
+                    </strong>
+
+                </div>
+
+
+                <div class="free-delivery">
+                    🚚 Free delivery on orders above ₹499
+                </div>
+
+
+                <div class="coupon-box">
+
+                    <label for="coupon">
+                        Have a coupon?
+                    </label>
+
+                    <div class="coupon-input">
+
+                        <input
+                            type="text"
+                            id="coupon"
+                            placeholder="Enter code"
+                        >
+
+                        <button onclick="applyCoupon()">
+                            Apply
+                        </button>
+
+                    </div>
+
+                    <p id="couponMessage"></p>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>Total</span>
+
+                    <strong id="total">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="checkout-btn"
+                    onclick="goToCheckout()">
+
+                    Proceed to Checkout →
+
+                </button>
+
+
+                <div class="secure-payment">
+                    🔒 Secure & safe checkout
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= BENEFITS ================= -->
+
+<section class="cart-benefits">
+
+    <div class="container benefits-grid">
+
+        <div class="benefit-card">
+
+            <span>🌱</span>
+
+            <div>
+
+                <h3>Farm Fresh</h3>
+
+                <p>
+                    Freshly sourced products
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="benefit-card">
+
+            <span>🚚</span>
+
+            <div>
+
+                <h3>Fast Delivery</h3>
+
+                <p>
+                    Delivered to your doorstep
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="benefit-card">
+
+            <span>🔒</span>
+
+            <div>
+
+                <h3>Secure Payment</h3>
+
+                <p>
+                    Your payment is protected
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="benefit-card">
+
+            <span>💚</span>
+
+            <div>
+
+                <h3>Easy Shopping</h3>
+
+                <p>
+                    Simple & convenient
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="site-footer">
+
+    <div class="container footer-content">
+
+        <div class="footer-brand">
+
+            <h2>🥬 FreshCart</h2>
+
+            <p>
+                Fresh choices. Easy shopping.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="products.html">
+                Shop
+            </a>
+
+            <a href="orders.html">
+                Orders
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 FreshCart.
+        Made with 💚 for fresh living.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="script.js"></script>
+
+<script>
+
+let cartItemsData =
+    JSON.parse(localStorage.getItem("freshCart")) || [];
+
+let couponApplied = false;
+
+
+/* =========================================
+   DISPLAY CART
+========================================= */
+
+function displayCart() {
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    const emptyCart =
+        document.getElementById("emptyCart");
+
+    const cartContent =
+        document.getElementById("cartContent");
+
+    const itemCount =
+        document.getElementById("itemCount");
+
+
+    /* EMPTY CART */
+
+    if (cartItemsData.length === 0) {
+
+        emptyCart.style.display = "block";
+
+        cartContent.style.display = "none";
+
+        document.getElementById("cartCount")
+            .textContent = "0";
+
+        return;
+    }
+
+
+    /* SHOW CART */
+
+    emptyCart.style.display = "none";
+
+    cartContent.style.display = "grid";
+
+
+    cartItems.innerHTML = "";
+
+
+    let totalItems = 0;
+
+
+    cartItemsData.forEach(product => {
+
+        totalItems += product.quantity;
+
+
+        const itemTotal =
+            product.price * product.quantity;
+
+
+        const item =
+            document.createElement("div");
+
+        item.className = "cart-item";
+
+
+        item.innerHTML = `
+
+            <div class="cart-product-image">
+
+                ${
+                    product.image
+
+                    ?
+
+                    `<img
+                        src="${product.image}"
+                        alt="${product.name}"
+                        onerror="this.style.display='none'; this.parentElement.innerHTML='🛒';"
+                    >`
+
+                    :
+
+                    `<span>🛒</span>`
+                }
+
+            </div>
+
+
+            <div class="cart-product-info">
+
+                <span class="cart-category">
+                    ${product.category || "Grocery"}
+                </span>
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <p>
+                    ${product.unit || ""}
+                </p>
+
+                <div class="cart-price">
+
+                    ₹${product.price}
+
+                    ${
+                        product.oldPrice
+
+                        ?
+
+                        `<del>
+                            ₹${product.oldPrice}
+                        </del>`
+
+                        :
+
+                        ""
+                    }
+
+                </div>
+
+            </div>
+
+
+            <div class="quantity-control">
+
+                <button
+                    onclick="updateCartQuantity('${product.id}', -1)">
+                    −
+                </button>
+
+                <span>
+                    ${product.quantity}
+                </span>
+
+                <button
+                    onclick="updateCartQuantity('${product.id}', 1)">
+                    +
+                </button>
+
+            </div>
+
+
+            <div class="cart-item-total">
+
+                <strong>
+                    ₹${itemTotal}
+                </strong>
+
+                <button
+                    class="remove-item"
+                    onclick="removeCartItem('${product.id}')">
+                    Remove
+                </button>
+
+            </div>
+
+        `;
+
+
+        cartItems.appendChild(item);
+
+    });
+
+
+    itemCount.textContent =
+        `${totalItems} ${totalItems === 1 ? "item" : "items"}`;
+
+
+    updateCartSummary();
+
+}
+
+
+/* =========================================
+   UPDATE QUANTITY
+========================================= */
+
+function updateCartQuantity(id, change) {
+
+    const product =
+        cartItemsData.find(
+            item => String(item.id) === String(id)
+        );
+
+
+    if (!product) return;
+
+
+    product.quantity += change;
+
+
+    if (product.quantity <= 0) {
+
+        cartItemsData =
+            cartItemsData.filter(
+                item => String(item.id) !== String(id)
+            );
+
+    }
+
+
+    saveCartData();
+
+    displayCart();
+
+}
+
+
+/* =========================================
+   REMOVE ITEM
+========================================= */
+
+function removeCartItem(id) {
+
+    cartItemsData =
+        cartItemsData.filter(
+            item => String(item.id) !== String(id)
+        );
+
+
+    saveCartData();
+
+    displayCart();
+
+    showCartMessage(
+        "Product removed from cart"
+    );
+
+}
+
+
+/* =========================================
+   SAVE CART
+========================================= */
+
+function saveCartData() {
+
+    localStorage.setItem(
+        "freshCart",
+        JSON.stringify(cartItemsData)
+    );
+
+}
+
+
+/* =========================================
+   CART SUMMARY
+========================================= */
+
+function updateCartSummary() {
+
+    let subtotal = 0;
+
+
+    cartItemsData.forEach(product => {
+
+        subtotal +=
+            product.price * product.quantity;
+
+    });
+
+
+    let discount = 0;
+
+
+    if (couponApplied) {
+
+        discount =
+            Math.round(subtotal * 0.25);
+
+    }
+
+
+    let delivery = 40;
+
+
+    if (subtotal >= 499) {
+
+        delivery = 0;
+
+    }
+
+
+    const total =
+        subtotal - discount + delivery;
+
+
+    document.getElementById("subtotal")
+        .textContent = `₹${subtotal}`;
+
+
+    document.getElementById("discount")
+        .textContent = `- ₹${discount}`;
+
+
+    document.getElementById("delivery")
+        .textContent =
+            delivery === 0
+            ? "FREE"
+            : `₹${delivery}`;
+
+
+    document.getElementById("total")
+        .textContent = `₹${total}`;
+
+
+    document.getElementById("cartCount")
+        .textContent =
+            cartItemsData.reduce(
+                (sum, item) =>
+                    sum + item.quantity,
+                0
+            );
+
+}
+
+
+/* =========================================
+   COUPON
+========================================= */
+
+function applyCoupon() {
+
+    const coupon =
+        document.getElementById("coupon")
+            .value
+            .trim()
+            .toUpperCase();
+
+
+    const message =
+        document.getElementById("couponMessage");
+
+
+    if (coupon === "FRESH25") {
+
+        couponApplied = true;
+
+        message.textContent =
+            "✓ Coupon applied! You saved 25%.";
+
+        message.className =
+            "coupon-success";
+
+        updateCartSummary();
+
+    }
+
+    else {
+
+        couponApplied = false;
+
+        message.textContent =
+            "Invalid coupon. Try FRESH25.";
+
+        message.className =
+            "coupon-error";
+
+        updateCartSummary();
+
+    }
+
+}
+
+
+/* =========================================
+   CHECKOUT
+========================================= */
+
+function goToCheckout() {
+
+    if (cartItemsData.length === 0) {
+
+        showCartMessage(
+            "Your cart is empty"
+        );
+
+        return;
+    }
+
+
+    localStorage.setItem(
+        "freshCartCoupon",
+        couponApplied
+            ? "FRESH25"
+            : ""
+    );
+
+
+    window.location.href =
+        "checkout.html";
+
+}
+
+
+/* =========================================
+   SMALL NOTIFICATION
+========================================= */
+
+function showCartMessage(message) {
+
+    const notification =
+        document.createElement("div");
+
+
+    notification.className =
+        "cart-notification";
+
+
+    notification.textContent =
+        message;
+
+
+    document.body.appendChild(
+        notification
+    );
+
+
+    setTimeout(() => {
+
+        notification.classList.add("show");
+
+    }, 10);
+
+
+    setTimeout(() => {
+
+        notification.remove();
+
+    }, 2500);
+
+}
+
+
+/* =========================================
+   LOGIN STATUS
+========================================= */
+
+function updateLoginStatus() {
+
+    const user =
+        localStorage.getItem(
+            "freshCartUser"
+        );
+
+
+    if (!user) return;
+
+
+    const loginLink =
+        document.querySelector(
+            ".login-link"
+        );
+
+
+    const registerBtn =
+        document.querySelector(
+            ".register-btn"
+        );
+
+
+    if (loginLink) {
+
+        loginLink.textContent =
+            "Profile";
+
+        loginLink.href =
+            "profile.html";
+
+    }
+
+
+    if (registerBtn) {
+
+        registerBtn.textContent =
+            "Logout";
+
+        registerBtn.href =
+            "#";
+
+
+        registerBtn.onclick =
+            function(e) {
+
+                e.preventDefault();
+
+
+                localStorage.removeItem(
+                    "freshCartUser"
+                );
+
+
+                window.location.href =
+                    "index.html";
+
+            };
+
+    }
+
+}
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        displayCart();
+
+        updateLoginStatus();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

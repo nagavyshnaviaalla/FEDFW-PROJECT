@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshCart | Checkout</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="site-header">
+
+    <div class="container nav-container">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🥬</span>
+            <span>FreshCart</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="products.html">Shop</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="index.html#offers">Offers</a>
+        </nav>
+
+        <div class="nav-actions">
+
+            <a href="login.html" class="login-link">
+                Login
+            </a>
+
+            <a href="register.html" class="register-btn">
+                Register
+            </a>
+
+            <a href="cart.html" class="cart-btn">
+                🛒 Cart
+                <span id="cartCount">0</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= CHECKOUT HERO ================= -->
+
+<section class="checkout-hero">
+
+    <div class="container">
+
+        <div class="checkout-heading">
+
+            <span class="small-label">
+                FRESH & EASY
+            </span>
+
+            <h1>Complete Your Order</h1>
+
+            <p>
+                Just a few details and your groceries will be on their way.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CHECKOUT ================= -->
+
+<main class="checkout-page">
+
+    <div class="container">
+
+        <div class="checkout-layout">
+
+            <!-- ================= LEFT SIDE ================= -->
+
+            <section class="checkout-details">
+
+                <!-- DELIVERY ADDRESS -->
+
+                <div class="checkout-card">
+
+                    <div class="checkout-card-title">
+
+                        <div class="step-number">
+                            1
+                        </div>
+
+                        <div>
+                            <h2>Delivery Address</h2>
+                            <p>Where should we deliver your order?</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="fullName">
+                                Full Name *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                placeholder="Enter your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone Number *
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder="10-digit mobile number"
+                                maxlength="10"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full-width">
+
+                            <label for="address">
+                                Address *
+                            </label>
+
+                            <textarea
+                                id="address"
+                                rows="3"
+                                placeholder="House / Flat number, street name"
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="city">
+                                City *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                placeholder="City"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="pincode">
+                                PIN Code *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="pincode"
+                                placeholder="6-digit PIN"
+                                maxlength="6"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DELIVERY TIME -->
+
+                <div class="checkout-card">
+
+                    <div class="checkout-card-title">
+
+                        <div class="step-number">
+                            2
+                        </div>
+
+                        <div>
+                            <h2>Delivery Time</h2>
+                            <p>Choose when you want your order.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="delivery-options">
+
+                        <label class="delivery-option">
+
+                            <input
+                                type="radio"
+                                name="delivery"
+                                value="40"
+                                checked
+                            >
+
+                            <div class="delivery-option-content">
+
+                                <strong>
+                                    ⚡ Express Delivery
+                                </strong>
+
+                                <span>
+                                    Within 30 minutes
+                                </span>
+
+                            </div>
+
+                            <b>
+                                ₹40
+                            </b>
+
+                        </label>
+
+
+                        <label class="delivery-option">
+
+                            <input
+                                type="radio"
+                                name="delivery"
+                                value="0"
+                            >
+
+                            <div class="delivery-option-content">
+
+                                <strong>
+                                    🌱 Standard Delivery
+                                </strong>
+
+                                <span>
+                                    Today, 2–4 hours
+                                </span>
+
+                            </div>
+
+                            <b>
+                                FREE
+                            </b>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+
+                <div class="checkout-card">
+
+                    <div class="checkout-card-title">
+
+                        <div class="step-number">
+                            3
+                        </div>
+
+                        <div>
+                            <h2>Payment Method</h2>
+                            <p>Select your preferred payment option.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="payment-options">
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="cod"
+                                checked
+                            >
+
+                            <div class="payment-icon">
+                                💵
+                            </div>
+
+                            <div>
+                                <strong>Cash on Delivery</strong>
+                                <span>Pay when your order arrives</span>
+                            </div>
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="upi"
+                            >
+
+                            <div class="payment-icon">
+                                📱
+                            </div>
+
+                            <div>
+                                <strong>UPI Payment</strong>
+                                <span>Pay securely using UPI</span>
+                            </div>
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="card"
+                            >
+
+                            <div class="payment-icon">
+                                💳
+                            </div>
+
+                            <div>
+                                <strong>Credit / Debit Card</strong>
+                                <span>Secure online payment</span>
+                            </div>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PLACE ORDER -->
+
+                <button
+                    type="button"
+                    class="place-order-btn"
+                    id="placeOrderBtn"
+                >
+                    Place Order →
+                </button>
+
+
+                <p class="checkout-security">
+                    🔒 Your information is protected with secure checkout.
+                </p>
+
+
+            </section>
+
+
+            <!-- ================= RIGHT SIDE ================= -->
+
+            <aside class="checkout-summary">
+
+                <h2>Your Order</h2>
+
+                <div id="checkoutProducts"></div>
+
+
+                <div class="checkout-summary-lines">
+
+                    <div>
+                        <span>Subtotal</span>
+
+                        <strong id="checkoutSubtotal">
+                            ₹0
+                        </strong>
+                    </div>
+
+
+                    <div>
+                        <span>Discount</span>
+
+                        <strong
+                            class="green-text"
+                            id="checkoutDiscount"
+                        >
+                            - ₹0
+                        </strong>
+                    </div>
+
+
+                    <div>
+                        <span>Delivery</span>
+
+                        <strong id="checkoutDelivery">
+                            ₹40
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="checkout-total">
+
+                    <span>Total</span>
+
+                    <strong id="checkoutTotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="checkout-trust">
+
+                    <div>
+                        🌱 Fresh products
+                    </div>
+
+                    <div>
+                        🚚 Fast delivery
+                    </div>
+
+                    <div>
+                        🔒 Secure checkout
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="site-footer">
+
+    <div class="container footer-content">
+
+        <div class="footer-brand">
+
+            <h2>🥬 FreshCart</h2>
+
+            <p>
+                Fresh choices. Easy shopping.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <a href="index.html">Home</a>
+            <a href="products.html">Shop</a>
+            <a href="orders.html">Orders</a>
+            <a href="profile.html">Profile</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+        © 2026 FreshCart. Made with 💚 for fresh living.
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="script.js"></script>
+<script src="checkout.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FreshCart - Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #d9ffe4, #ffffff);
+        }
+
+        .login-box {
+            width: 400px;
+            max-width: 90%;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            text-align: center;
+            color: #198754;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        input:focus {
+            border-color: #198754;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 8px;
+            background: #198754;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #146c43;
+        }
+
+        .register {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register a {
+            color: #198754;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <div class="logo">
+        🛒 FreshCart
+    </div>
+
+    <h2>Login</h2>
+
+    <form id="loginForm">
+
+        <label>Email Address</label>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Enter your email"
+            required
+        >
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter your password"
+            required
+        >
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <div class="register">
+        Don't have an account?
+        <a href="register.html">Create Account</a>
+    </div>
+
+</div>
+
+
+<script>
+
+    document
+        .getElementById("loginForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            // Get entered values
+            const email =
+                document.getElementById("loginEmail").value.trim();
+
+            const password =
+                document.getElementById("loginPassword").value;
+
+            // Get registered user
+            const storedUser =
+                localStorage.getItem("freshCartUser");
+
+            const message =
+                document.getElementById("message");
+
+
+            // Check whether user is registered
+            if (!storedUser) {
+
+                message.style.color = "red";
+
+                message.innerText =
+                    "No registered account found. Please register first.";
+
+                return;
+            }
+
+
+            // Convert stored data from JSON
+            const user = JSON.parse(storedUser);
+
+
+            // Check email and password
+            if (
+                email === user.email &&
+                password === user.password
+            ) {
+
+                message.style.color = "green";
+
+                message.innerText =
+                    "Login successful! 🛒";
+
+
+                // Save login status
+                localStorage.setItem("isLoggedIn", "true");
+
+
+                // Go to products page
+                setTimeout(function() {
+
+                    window.location.href = "products.html";
+
+                }, 1000);
+
+            } else {
+
+                message.style.color = "red";
+
+                message.innerText =
+                    "Invalid email or password.";
+
+            }
+
+        });
+
+</script>
+
+</body>
+</html>
